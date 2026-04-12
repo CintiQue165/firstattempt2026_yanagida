@@ -1,38 +1,58 @@
-Career Passport — Yanagida
+# Career Passport — Yanagida
+
 ![Lit](https://img.shields.io/badge/Framework-Lit-324fff?style=for-the-badge&logo=lit&logoColor=white)
 ![HTML](https://img.shields.io/badge/Language-HTML%2FJS-orange?style=for-the-badge&logo=html5&logoColor=white)
 ![No Build](https://img.shields.io/badge/Build-None%20Required-success?style=for-the-badge)
-Career Passport is a web-based alumni job placement platform built for Blue Knight University. It allows verified alumni to showcase their academic credentials, apply to exclusive job listings, and track their applications in real time. Employers can post jobs, screen applicants by match score, and manage their hiring pipeline. Staff administrators can monitor graduate employment analytics and generate placement reports.
-This project was built as part of Module 4: Job Posting for the course 4-112 (MW 7:30AM–9:00AM).
+
+**Career Passport** is a web-based alumni job placement platform built for Blue Knight University. It allows **verified alumni** to showcase their academic credentials, apply to exclusive job listings, and track their applications in real time. **Employers** can post jobs, screen applicants by match score, and manage their hiring pipeline. **Staff administrators** can monitor graduate employment analytics and generate placement reports.
+
+This project was built as part of **Module 4: Job Posting** for the course 4-112 (MW 7:30AM–9:00AM).
+
 ---
-Framework
-Lit — a lightweight web components library by Google. Lit is used to build all UI components in a modular, reactive, and scoped-CSS architecture. No build tools or bundlers are required.
+
+## Framework
+
+**Lit** — a lightweight web components library by Google. Lit is used to build all UI components in a modular, reactive, and scoped-CSS architecture. No build tools or bundlers are required.
+
 > Official docs: https://lit.dev
+
 ---
-Module
-Module 4: Job Posting
+
+## Module
+
+**Module 4: Job Posting**
+
 Screens covered:
-Unified Login (Alumni / Employer / Staff)
-Career Passport (Alumni Profile)
-Job Search
-Job Detail with Skill Match Analysis
-Digital Vault (Secure Document Storage)
-Instant Application
-Application Status Tracker
-Employer Dashboard
-Post a Career Opportunity (4-step form)
-Applicant Screening
-Admin Analytics Dashboard
+- Unified Login (Alumni / Employer / Staff)
+- Career Passport (Alumni Profile)
+- Job Search
+- Job Detail with Skill Match Analysis
+- Digital Vault (Secure Document Storage)
+- Instant Application
+- Application Status Tracker
+- Employer Dashboard
+- Post a Career Opportunity (4-step form)
+- Applicant Screening
+- Admin Analytics Dashboard
+
 ---
-Getting Started / Installation
-This project is a single HTML file — no frameworks to install, no terminal required.
-Option A — Simplest (Just open in browser)
-Download or clone this repository
-Open `career-passport.html` in any modern browser (Chrome, Edge, Firefox, Safari)
-That's it — the app runs immediately
+
+## Getting Started / Installation
+
+This project is a **single HTML file** — no frameworks to install, no terminal required.
+
+### Option A — Simplest (Just open in browser)
+
+1. Download or clone this repository
+2. Open `career-passport.html` in any modern browser (Chrome, Edge, Firefox, Safari)
+3. That's it — the app runs immediately
+
 > ⚠️ Requires an internet connection on first load to fetch fonts (Google Fonts) and the Lit framework (jsDelivr CDN). After that, the browser caches everything.
+
 ---
-Option B — Clone via Git (Windows PowerShell)
+
+### Option B — Clone via Git (Windows PowerShell)
+
 ```bash
 # Step 1: Install Git if you don't have it
 winget install Git.Git
@@ -46,7 +66,9 @@ cd firstattempt2026_yanagida
 # Step 4: Open the file in your default browser
 start career-passport.html
 ```
-Option B — Clone via Git (Mac/Linux Terminal)
+
+### Option C — Clone via Git (Mac/Linux Terminal)
+
 ```bash
 # Step 1: Clone the repository
 git clone https://github.com/YOUR_USERNAME/firstattempt2026_yanagida.git
@@ -58,9 +80,11 @@ cd firstattempt2026_yanagida
 open career-passport.html        # macOS
 xdg-open career-passport.html   # Linux
 ```
+
 ---
-Option C — Run with a Local Server (Optional)
-If you prefer serving it over localhost:
+
+### Option D — Run with a Local Server (Optional)
+
 ```bash
 # Using Python (comes pre-installed on most systems)
 python -m http.server 8080
@@ -68,22 +92,35 @@ python -m http.server 8080
 # Then open your browser and go to:
 # http://localhost:8080/career-passport.html
 ```
+
 ---
-How to Use the App
-Role	How to Log In	What You'll See
-Alumni	Click "Alumni" tab → enter any email + password	Career Passport, Job Search, Digital Vault, Apply, Tracker
-Employer	Click "Employer" tab → enter any email + password	Dashboard, Post Job, Applicant Screening
-Staff	Click "Staff" tab → enter any email + password	Admin Analytics Dashboard
+
+## How to Use the App
+
+| Role | How to Log In | What You'll See |
+|---|---|---|
+| **Alumni** | Click "Alumni" tab → enter any email + password | Career Passport, Job Search, Digital Vault, Apply, Tracker |
+| **Employer** | Click "Employer" tab → enter any email + password | Dashboard, Post Job, Applicant Screening |
+| **Staff** | Click "Staff" tab → enter any email + password | Admin Analytics Dashboard |
+
 > All data is mock/static — no real backend or authentication.
+
 ---
-AI Tools Used
-Tool	Usage
-Claude (Anthropic)	Primary code generation — converted Activity #10 high-fidelity mobile UI designs into a full Lit web application
-ChatGPT	Secondary reference for Lit component patterns
-GitHub Copilot (VS Code)	Inline code suggestions during editing
+
+## AI Tools Used
+
+| Tool | Usage |
+|---|---|
+| **Claude (Anthropic)** | Primary code generation — converted Activity #10 high-fidelity mobile UI designs into a full Lit web application |
+| **ChatGPT** | Secondary reference for Lit component patterns |
+| **GitHub Copilot (VS Code)** | Inline code suggestions during editing |
+
 ---
-Prompt
+
+## Prompt
+
 The following prompt was used to generate the complete working application:
+
 ```
 You are a senior frontend developer specializing in modern web components using the Lit 
 framework. Your task is to convert the existing UI design from these screenshots into a 
@@ -112,48 +149,75 @@ main JavaScript entry point, and all necessary component files organized appropr
 ensuring the application runs smoothly in a modern browser using a simple local 
 development server.
 ```
+
 ---
-Screenshots
-> Place your screenshots inside an `/images` folder in the root of this repository, then update the paths below.
-Login Screen — Alumni Tab
+
+## Screenshots
+
+### 01 — Login Screen (Alumni Tab)
 ![Login Alumni](images/01-login-alumni.png)
-Login Screen — Employer Tab
+
+### 02 — Login Screen (Employer Tab)
 ![Login Employer](images/02-login-employer.png)
-Career Passport (Alumni Profile)
+
+### 03 — Career Passport (Alumni Profile)
 ![Career Passport](images/03-career-passport.png)
-Job Search
+
+### 04 — Job Search
 ![Job Search](images/04-job-search.png)
-Job Detail — Skill Match Analysis
+
+### 05 — Job Detail with Skill Match Analysis
 ![Job Detail](images/05-job-detail.png)
-Digital Vault
+
+### 06 — Digital Vault
 ![Digital Vault](images/06-digital-vault.png)
-Instant Application
+
+### 07 — Instant Application
 ![Instant Apply](images/07-instant-apply.png)
-Application Status Tracker
+
+### 08 — Application Status Tracker
 ![App Tracker](images/08-app-tracker.png)
-Employer Dashboard
+
+### 09 — Employer Dashboard
 ![Employer Dashboard](images/09-employer-dashboard.png)
-Post a Career Opportunity
+
+### 10 — Post a Career Opportunity
 ![Post Job](images/10-post-job.png)
-Applicant Screening
+
+### 11 — Applicant Screening
 ![Applicant Screening](images/11-applicant-screening.png)
-Admin Analytics Dashboard
+
+### 12 — Admin Analytics Dashboard
 ![Admin Analytics](images/12-admin-analytics.png)
+
 ---
-File Structure
+
+## File Structure
+
 ```
 firstattempt2026_yanagida/
 │
 ├── career-passport.html     ← Main app (single file, open directly in browser)
 ├── README.md                ← This file
-└── images/                  ← Screenshots folder (add your own screenshots here)
+└── images/                  ← Screenshots folder
     ├── 01-login-alumni.png
     ├── 02-login-employer.png
     ├── 03-career-passport.png
-    └── ...
+    ├── 04-job-search.png
+    ├── 05-job-detail.png
+    ├── 06-digital-vault.png
+    ├── 07-instant-apply.png
+    ├── 08-app-tracker.png
+    ├── 09-employer-dashboard.png
+    ├── 10-post-job.png
+    ├── 11-applicant-screening.png
+    └── 12-admin-analytics.png
 ```
+
 ---
-Author
-Maki Yanagida
+
+## Author
+
+**Maki Yanagida**
 Course: 4-112 | MW 7:30AM – 9:00AM
 Module 4: Job Posting
