@@ -3,10 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── PWA: App Title ─────────────────────────────────── -->
     <title>Career Passport — Blue Knight</title>
+    <meta name="description" content="Blue Knight University Alumni Job Placement Platform" />
+    <meta name="application-name" content="Career Passport" />
+
+    <!-- ── PWA: Theme Color (browser chrome color on mobile) ─ -->
+    <meta name="theme-color" content="#0d2d5e" />
+
+    <!-- ── PWA: Manifest Link ─────────────────────────────── -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- ── PWA: iOS Support ───────────────────────────────── -->
+    <!-- iOS doesn't use manifest.json for icons, so we add these -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CareerPassport" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- ── PWA: Favicon ───────────────────────────────────── -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+
+    <!-- ── Fonts ──────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ── Global Styles ──────────────────────────────────── -->
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
