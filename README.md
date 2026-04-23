@@ -3,6 +3,7 @@
 ![Lit](https://img.shields.io/badge/Framework-Lit-324fff?style=for-the-badge&logo=lit&logoColor=white)
 ![Vite](https://img.shields.io/badge/Bundler-Vite-646cff?style=for-the-badge&logo=vite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/Language-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)
+![PWA](https://img.shields.io/badge/PWA-Ready-5a0fc8?style=for-the-badge&logo=pwa&logoColor=white)
 ![No Backend](https://img.shields.io/badge/Backend-None-success?style=for-the-badge)
 
 **Career Passport** is a web-based alumni job placement platform built for Blue Knight University. It allows **verified alumni** to showcase their academic credentials, apply to exclusive job listings, and track their applications in real time. **Employers** can post jobs, screen applicants by match score, and manage their hiring pipeline. **Staff administrators** can monitor graduate employment analytics and generate placement reports.
@@ -38,12 +39,57 @@ Screens covered:
 
 ---
 
+## PWA (Progressive Web App) — `feature/pwa-ready`
+
+This branch converts the Career Passport into a fully installable, offline-capable Progressive Web App.
+
+### What was added
+
+| File | Purpose |
+|---|---|
+| `public/manifest.json` | Defines app name, icons, colors, and display mode |
+| `public/service-worker.js` | Handles caching and offline support |
+| `public/icons/icon-192.png` | App icon (small) |
+| `public/icons/icon-512.png` | App icon (large) |
+| `index.html` | Updated with PWA meta tags and manifest link |
+| `src/main.js` | Updated to register the service worker |
+
+### Caching Strategy
+
+**Cache-First with Network Fallback:**
+1. On first load — all core files are cached (HTML, CSS, JS, icons)
+2. On repeat visits — files are served instantly from cache
+3. On network failure — app still loads from cache (works offline)
+4. On cache update — increment `CACHE_NAME` version in `service-worker.js`
+
+### How to Test PWA Features
+
+```bash
+npm install
+npm run dev
+```
+
+Then in Chrome:
+1. Open **DevTools (F12)** → **Application** tab
+2. Click **Service Workers** — should show `✅ activated and running`
+3. Click **Manifest** — should show app name, icons, and colors
+4. Look for the **install icon** in the Chrome address bar → click to install
+5. Go to **Network** tab → set to **Offline** → refresh → app still loads ✅
+
+---
+
 ## File Structure
 
 ```
 firstattempt2026_yanagida/
 │
-├── index.html                          ← App entry point
+├── public/                             ← PWA assets
+│   ├── manifest.json                   ← PWA manifest
+│   ├── service-worker.js               ← Caching + offline logic
+│   └── icons/
+│       ├── icon-192.png                ← App icon (192x192)
+│       └── icon-512.png                ← App icon (512x512)
+├── index.html                          ← App entry point (PWA meta tags added)
 ├── package.json                        ← Project dependencies (Lit + Vite)
 ├── package-lock.json                   ← Locked dependency versions
 ├── vite.config.js                      ← Vite dev server configuration
@@ -62,7 +108,7 @@ firstattempt2026_yanagida/
 │   ├── 11-applicant-screening.png
 │   └── 12-admin-analytics.png
 └── src/
-    ├── main.js                         ← Imports all components
+    ├── main.js                         ← Imports all components + SW registration
     ├── styles/
     │   └── global.css                  ← Global CSS variables & reset
     ├── data/
@@ -103,10 +149,13 @@ git clone https://github.com/CintiQue165/firstattempt2026_yanagida.git
 # Step 2: Navigate into the project folder
 cd firstattempt2026_yanagida
 
-# Step 3: Install dependencies (installs Lit + Vite automatically)
+# Step 3: Switch to the PWA branch (optional)
+git checkout feature/pwa-ready
+
+# Step 4: Install dependencies (installs Lit + Vite automatically)
 npm install
 
-# Step 4: Start the development server
+# Step 5: Start the development server
 npm run dev
 ```
 
@@ -149,15 +198,17 @@ Output will be in the `dist/` folder, ready to deploy anywhere.
 
 | Tool | Usage |
 |---|---|
-| **Claude (Anthropic)** | Primary — generated the entire Lit web application from Activity #10 UI designs |
+| **Claude (Anthropic)** | Primary — generated the entire Lit web application and PWA conversion from Activity #10 UI designs |
 | **ChatGPT** | Secondary reference for Lit component patterns |
 | **GitHub Copilot (VS Code)** | Inline code suggestions during editing |
 
 ---
 
-## Prompt
+## Master Prompt
 
-The following prompt was used to generate the complete working application:
+### Original App Generation Prompt
+
+The following prompt was used to generate the complete working Lit application:
 
 ```
 You are a senior frontend developer specializing in modern web components using the Lit
@@ -187,6 +238,131 @@ main JavaScript entry point, and all necessary component files organized appropr
 ensuring the application runs smoothly in a modern browser using a simple local
 development server.
 ```
+
+---
+
+### PWA Conversion Master Prompt
+
+The following prompt was used to convert the existing Lit app into a Progressive Web App:
+
+```
+I am an Information Technology student working on an existing web application stored
+in a public GitHub repository. The project is built using Lit Framework.
+
+I want to transform this project into a fully functional Progressive Web App (PWA)
+using best practices, and I am working in a new Git branch called: feature/pwa-ready.
+
+Guide me step-by-step through the entire PWA conversion process. Assume I am still
+learning, but keep explanations practical and focused on implementation.
+
+Requirements:
+1. Manifest File — Generate a complete manifest.json with name, short_name, start_url,
+   display, background_color, theme_color, and icons (192x192 and 512x512)
+2. Service Worker — Create service-worker.js with install, activate, and fetch events.
+   Show how to register it in main.js
+3. Caching Strategy — Implement cache-first with network fallback. Cache HTML, CSS,
+   JS, and images. Ensure offline support and prevent stale cache issues
+4. App Icons — Explain placement and linking in manifest and HTML
+5. Testing — Show how to verify service worker, trigger install prompt, and test offline
+6. Framework-specific adjustments for Lit + Vite
+7. Give exact file names, full copy-paste code, and folder structure
+8. List common errors and quick fixes
+
+Do NOT give vague explanations. I need actionable code and clear reasoning for each
+step so I can explain this in an architecture presentation.
+```
+
+---
+
+## AI Hallucinations & Errors Fixed Manually
+
+During the PWA conversion process using Claude AI, the following issues were
+encountered and had to be corrected manually:
+
+### 1. ❌ Hallucination — Wrong Service Worker File Location
+**What the AI generated:**
+The AI initially placed `service-worker.js` inside the `src/` folder.
+
+**Why it was wrong:**
+Vite does not serve files from `src/` as static assets. Service workers must be
+served from the root URL (`/service-worker.js`), which means they must live in
+the `public/` folder so Vite copies them to the build output root.
+
+**Fix applied:**
+Moved `service-worker.js` to `public/service-worker.js`.
+
+---
+
+### 2. ❌ Hallucination — Missing `public/` Folder in Project
+**What the AI generated:**
+The AI assumed a `public/` folder already existed in the project and gave
+instructions to place files there without explaining it needed to be created first.
+
+**Why it was wrong:**
+The original Lit + Vite project did not have a `public/` folder. Vite only
+creates one if you explicitly add it. Uploading to GitHub without creating the
+folder first caused file path errors.
+
+**Fix applied:**
+Manually created the `public/` folder on GitHub by using
+**Add file → Create new file** and typing `public/manifest.json` as the filename,
+which forces GitHub to create the folder.
+
+---
+
+### 3. ❌ Hallucination — Incorrect Icon Paths in Manifest
+**What the AI initially wrote:**
+```json
+"src": "icons/icon-192.png"
+```
+
+**Why it was wrong:**
+Without the leading `/`, the path is treated as relative to the current page URL,
+which breaks icon loading when navigating to sub-routes. PWA icon paths must be
+absolute from the root.
+
+**Fix applied:**
+```json
+"src": "/icons/icon-192.png"
+```
+
+---
+
+### 4. ❌ Hallucination — Service Worker Registration Placed Before Component Imports
+**What the AI generated:**
+The AI placed the service worker registration code at the top of `main.js`,
+before all the Lit component imports.
+
+**Why it was wrong:**
+Service worker registration should happen after the page has fully loaded
+(`window.addEventListener('load', ...)`). Placing it at the top risked slowing
+down the initial component registration and caused a race condition where the
+SW tried to cache files before they were available.
+
+**Fix applied:**
+Moved the SW registration block to the bottom of `main.js`, inside a
+`window.addEventListener('load', ...)` callback so it only runs after
+all components are registered and the page is ready.
+
+---
+
+### 5. ❌ Error — `npm` Script Execution Blocked on Windows
+**What happened:**
+Running `npm install` in Windows PowerShell returned:
+```
+File cannot be loaded because running scripts is disabled on this system.
+```
+
+**Why it happened:**
+Windows PowerShell has a default execution policy that blocks unsigned scripts,
+including npm's `.ps1` launcher.
+
+**Fix applied:**
+Either ran the following command in PowerShell as Administrator:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+Or switched to **Command Prompt (cmd)** which does not have this restriction.
 
 ---
 
